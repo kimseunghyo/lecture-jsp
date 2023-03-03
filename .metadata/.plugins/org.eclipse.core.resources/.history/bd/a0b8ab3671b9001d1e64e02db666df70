@@ -1,0 +1,31 @@
+<%@page import="java.net.URLEncoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+	String userID = request.getParameter("userID");
+	String userPW = request.getParameter("userPW");
+	String userName = "유저";
+	
+	pageContext.setAttribute("name", "나는 pageContext 입니다.");
+	request.setAttribute("name", "나는 reauest 입니다.");
+	session.setAttribute("name", "나는 session 입니다.");
+	applicaion.setAttribute("name", "나는 applicaion 입니다.");
+
+	if (userID.equals("id1234") && userPW.equals("1234")) {
+		request.setAttribute("userName", "홍길동");
+		request.setAttribute("userAge", 30);
+		RequestDispatcher dispatcher =  request.getRequestDispatcher("login_success_forward.jsp");
+		dispatcher.forward(request, response);
+	} else {
+		out.println("<script>alert('아이디 패스워드 확인해 주세요.');history.back();</script>");
+	}
+	%>
+</body>
+</html>

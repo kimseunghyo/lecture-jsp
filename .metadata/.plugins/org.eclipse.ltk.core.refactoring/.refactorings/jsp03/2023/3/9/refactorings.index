@@ -1,0 +1,4 @@
+1677819658588	Move 'db.jsp' to 'WEB-INF'
+1677819667020	Move 'db.jsp' to 'webapp'
+1677819673498	Move 'ojdbc6.jar' to 'lib'
+1677819886392	Rename resource 'home.jsp'

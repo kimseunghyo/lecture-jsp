@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="GET" action="join_process.jsp">
+		<div>
+			<label><span>아이디</span><input type="text" name="userID"></label>
+		</div>
+		<div>
+			<label><span>비밀번호</span><input type="password" name="userPW"></label>
+		</div>
+		<div> //  userName
+			<label><span>이름</span><input type="text" name="userName"></label>
+		</div>
+		<div> //  radio gender
+			<label><span>성별</span><input type="radio" name="gender" value="man">남<input type="radio" name="gender" value="woman">여</label>
+		</div>
+		<div> //  select (초졸(초졸), 중졸(중졸), 대졸(대졸), 대학원졸(대학원졸)) grade
+			<label><span>학력</span><input type="password" name="userPW"></label>
+		</div>
+		<div>
+			<button>회원가입</button>
+			<button type="reset">취소</button>
+		</div>
+	</form>
+</body>
+</html>
