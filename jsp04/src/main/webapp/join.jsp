@@ -11,7 +11,8 @@
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" name="userID" id="userID"
-					placeholder="아이디를 입력하세요." /></td>
+					placeholder="아이디를 입력하세요." />
+					<button class="btn idCheck">아이디 중복 확인</button></td>
 			</tr>
 			<tr>
 				<th>패스워드</th>
@@ -66,10 +67,41 @@
 </form>
 <script>
 	//jQuery alias  $
-	const userID = document.querySelector("#userID");
-	const jUserID = $("#userID"); // wrapping 함수
-	console.log(userID); // 정확하게 선택된 돔 결과만 보여준다.
-	console.log(jUserID); // jQuery로 래핑한 결과를 보여준다.
+	// const userID = document.querySelector("#userID");
+	// const jUserID = $("#userID"); // wrapping 함수
+	// console.log(userID); // 정확하게 선택된 돔 결과만 보여준다.
+	// console.log(jUserID); // jQuery로 래핑한 결과를 보여준다.
+
+	$(".idCheck").on("click", function() {
+		const sendUserID = $("#userID").val();
+
+		if (sendUserID !== "") {
+			$.ajax({
+				url : "idCheck.jsp",
+				data : {
+					userID : sendUserID
+				},
+				success : function(response) {
+					if (parseInt(response.trim()) === 0) {
+						alert("쓸 수 있는 아이디 입니다.");
+						$("#userID").attr("readonly", true);
+					} else {
+						alert("쓸 수 없는 아이디 입니다.");
+						$("#userID").val("");
+						$("#userID").focus();
+					}
+				},
+				fail : function(error) {
+					console.log(error);
+				}
+			})
+		} else {
+			alert("아이디를 입력해 주세요.");
+			$("#userID").focus();
+		}
+		return false;
+	})
+
 	$(".zipCode").on(
 			"click",
 			function() {
@@ -122,6 +154,7 @@
 						}).open();
 				return false;
 			});
+
 	$(".confirm").on("click", function() {
 		if ($("#userID").val() === "") {
 			alert("아이디를 입력해주세요.");
