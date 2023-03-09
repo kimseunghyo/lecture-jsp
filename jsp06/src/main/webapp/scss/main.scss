@@ -1,0 +1,452 @@
+@import "vars";
+@import "mixins";
+
+.container {
+  width: 1360px;
+  margin: 0 auto;
+}
+
+.section {
+  overflow: hidden;
+  padding: 120px 0;
+  background-color: #fff;
+
+  .container {
+    min-height: 500px;
+
+    .title-box {
+      h2 {
+        margin-bottom: 30px;
+        font-size: 78px;
+        font-weight: 700;
+      }
+
+      p {
+        margin-bottom: 60px;
+        font-size: 24px;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+
+        &::after {
+          @include icon("east");
+        }
+      }
+    }
+  }
+}
+
+.main-video {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+
+  video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  &__txt {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    font-size: 64px * 1.5;
+    font-weight: 700;
+    color: #fff;
+    transform: translateY(-50%);
+
+    .red {
+      color: $red;
+    }
+
+    .blue {
+      color: $blue;
+    }
+  }
+
+  .arrow {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    color: $blue;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: arrow-move 0.65s ease infinite alternate;
+    @include center();
+  }
+}
+
+.about {
+  margin-top: 100vh;
+  padding: 200px 0;
+  text-align: center;
+  background-image: url("../images/main/bg_introduce.png");
+  background-position: left 50% bottom 0;
+
+  .title-box {
+    span {
+      color: $blue;
+    }
+
+    h2 {
+      margin-bottom: 50px;
+      font-size: 90px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 40px;
+      line-height: 1.25;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 50px;
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 100px;
+    background-color: $blue;
+    @include longShadow(30, darken($blue, 10));
+  }
+}
+
+.tech {
+  color: #fff;
+  background-color: $blue;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .contents {
+      width: 50%;
+    }
+
+    .icon-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px 0;
+
+      li {
+        width: (100% / 3);
+        padding: 0 40px;
+        text-align: center;
+        box-sizing: border-box;
+
+        img {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+.block-chain {
+  color: #fff;
+  background-image: url("../images/main/img_main02.png");
+  background-size: cover;
+  background-attachment: fixed;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .title-box {
+      width: 40%;
+
+      h2 {
+        white-space: nowrap;
+      }
+
+      a:after {
+        color: $blue;
+      }
+    }
+
+    .contents {
+      width: 60%;
+      padding-top: 110px;
+
+      .block-chain__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+
+        > li {
+          width: calc(50% - 30px);
+          padding: 30px;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+          box-sizing: border-box;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 30px;
+
+          .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #fff;
+
+            h3 {
+              font-size: 20px;
+            }
+
+            span {
+              display: flex;
+              align-items: center;
+            }
+
+            span:after {
+              font-size: 20px;
+              @include icon("east");
+            }
+          }
+
+          &:nth-child(1) .title span:after {
+            display: none;
+          }
+
+          ul {
+            li {
+              margin-top: 20px;
+
+              a {
+                display: block;
+                position: relative;
+                overflow: hidden;
+                padding-right: 100px;
+                white-space: nowrap; // 무조건 한줄로
+                text-overflow: ellipsis;
+
+                .date {
+                  position: absolute;
+                  right: 0;
+                }
+              }
+            }
+          }
+
+          .num {
+            display: flex;
+            align-items: center;
+
+            &--main {
+              font-size: 48px;
+              font-weight: 900;
+            }
+
+            &--state {
+              display: flex;
+              align-items: center;
+              font-size: 20px;
+
+              .material-icons {
+                font-size: 48px;
+                color: red;
+              }
+            }
+
+            &--company {
+              margin-left: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.platform {
+  position: relative;
+
+  overflow: hidden;
+
+  .container {
+    width: 100%;
+
+    &:before {
+      display: block;
+      width: 15%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%
+      );
+      content: "";
+    }
+
+    &:after {
+      display: block;
+      width: 15%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%
+      );
+      content: "";
+    }
+  }
+
+  .title-box {
+    text-align: center;
+
+    h2 {
+      color: $blue;
+    }
+  }
+
+  .platform-swiper {
+    position: relative;
+  }
+
+  .platform-list {
+    li {
+      width: 300px;
+      position: relative;
+
+      &:hover {
+        img {
+          transform: scale(1.25);
+        }
+
+        .title {
+          color: $blue;
+        }
+      }
+
+      .img-box {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 50%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          transition: all 0.25s ease;
+          object-fit: cover;
+        }
+      }
+
+      .sticker {
+        position: absolute;
+        top: 30px;
+        left: 60%;
+        overflow: hidden;
+        padding: 10px 30px;
+        color: #fff;
+        background-color: $blue;
+        border-radius: 100px;
+        white-space: nowrap;
+        @include longShadow(20, darken($blue, 20));
+      }
+
+      .title {
+        display: block;
+        margin-top: 20px;
+        font-size: 20px;
+        text-align: center;
+        transition: all 0.25s ease;
+      }
+    }
+  }
+
+  .btn {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    color: $blue;
+    border: 1px solid #ccc;
+    transform: translateY(-55%);
+    background-color: #fff;
+    border-radius: 50%;
+
+    &--prev {
+      left: 50px;
+
+      &:after {
+        font-size: 48px;
+        @include icon("chevron_left", 0);
+      }
+    }
+
+    &--next {
+      right: 50px;
+
+      &:after {
+        font-size: 48px;
+        @include icon("chevron_right", 0);
+      }
+    }
+  }
+}
+
+.recruit {
+  color: #fff;
+  background-image: url("../images/main/img_main01.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.business {
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .title-box {
+      h2 {
+        color: $blue;
+      }
+
+      a:after {
+        color: $blue;
+      }
+    }
+  }
+
+  .img {
+    width: 800px;
+    height: 500px;
+    background-image: url("../images/main/img_partner.png");
+    background-position: center;
+    background-size: cover;
+    border-radius: 50px;
+  }
+}
+
+@keyframes arrow-move {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(50px);
+  }
+}
