@@ -23,7 +23,6 @@ public class BoardModifyController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int no = Integer.parseInt(request.getParameter("no"));
 		BoardDao boardDao = new BoardDao();
-		int result = boardDao.updateHit(no);
 		BoardDto boardDto = boardDao.getSelectOne(no);
 		request.setAttribute("boardDto", boardDto);
 		
